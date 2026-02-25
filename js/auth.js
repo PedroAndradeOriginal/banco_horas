@@ -8,12 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("formLogin");
   if (!form) return;
 
-  // 🔹 Pré-preenchimento (modo dev)
-  if (DEV_MODE) {
-    document.getElementById("email").value = "pedro.andrade@hc.eng.br";
-    document.getElementById("senha").value = "Pm310318*";
-  }
-
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     await login();
@@ -55,3 +49,4 @@ async function login() {
     erro.innerText = "Erro ao autenticar.";
   }
 }
+
