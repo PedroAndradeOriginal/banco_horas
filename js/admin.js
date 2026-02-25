@@ -81,22 +81,26 @@ async function validarPerfil() {
    CARREGAR TODOS REGISTROS
 ============================ */
 async function carregarRegistros() {
-  const { data, error } = await supabase
-    .from("lancamentos")
-    .select("*, usuarios(nome)")
-    .order("created_at", { ascending: false });
 
-  if (error) {
-    alert("Erro ao carregar dados.");
-    return;
+  try {
+
+    const { data, error } = await supabase
+      .from("lancamentos")
+      .select("*, usuarios(nome)")
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    registrosAdmin = data || [];
+
+    atualizarTabela();
+    atualizarTotalBanco();
+    gerarGraficoSupervisor();
+    gerarRanking();
+
+  } catch (err) {
+    console.error("Erro real ao carregar registros:", err);
   }
-
-  registrosAdmin = data || [];
-
-  atualizarTabela();
-  atualizarTotalBanco();
-  gerarGraficoSupervisor();
-  gerarRanking();
 }
 
 /* ============================
@@ -382,3 +386,4 @@ async function logout() {
 }
 
 window.logout = logout;
+
