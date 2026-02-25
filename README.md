@@ -3,7 +3,7 @@
 Sistema web para **gestão de banco de horas**, permitindo controle por supervisor e administração, com registro, acompanhamento e controle de horas de colaboradores.
 
 🔗 Acesse o sistema:  
-https://pedroandradeoriginal.github.io/banco_horas/
+https://pedroandradeoriginal.github.io/banco_horas/index.html
 
 ---
 
@@ -41,13 +41,6 @@ O sistema é 100% web e pode ser executado diretamente no navegador.
 - Bootstrap 5
 - JavaScript
 - GitHub Pages (Deploy)
-
----
-## 🌐 Deploy
-
-Projeto hospedado via **GitHub Pages**:
-
-https://pedroandradeoriginal.github.io/banco_horas/
 
 ---
 
