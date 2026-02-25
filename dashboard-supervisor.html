@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Supervisor - Banco de Horas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark bg-dark px-4 position-relative fixed-top">
+        <div class="container-fluid">
+
+            <!-- TÍTULO CENTRAL -->
+            <div class="position-absolute top-50 start-50 translate-middle d-flex align-items-center">
+                <img src="assets/logo.png" alt="Logo" height="35" class="me-2">
+                <span class="navbar-brand fw-semibold mb-0">
+                    Banco de Horas - Supervisor
+                </span>
+            </div>
+
+            <!-- LADO DIREITO -->
+            <div class="ms-auto d-flex align-items-center gap-3">
+
+                <span class="text-white small">
+                    Olá, <strong id="nomeSupervisor">...</strong>
+                </span>
+
+                <button id="btnLogout" class="btn btn-danger btn-sm px-4">
+                    Sair
+                </button>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <div class="container my-4">
+
+        <!-- SALDO -->
+        <div class="row mb-4 g-3">
+
+            <!-- Saldo Atual -->
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 text-center p-4">
+                    <h6 class="text-muted">Saldo Atual</h6>
+                    <h2 id="saldoAtual" class="fw-bold mb-1">0h</h2>
+                    <div id="farol"></div>
+                </div>
+            </div>
+
+            <!-- Total Pendêntes -->
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 text-center p-4">
+                    <h6 class="text-muted">Horas Pendêntes de aprovação</h6>
+                    <h2 id="totalMes" class="fw-bold mb-1">0h</h2>
+                </div>
+            </div>
+
+            <!-- Total Histórico -->
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 text-center p-4">
+                    <h6 class="text-muted">Total Histórico</h6>
+                    <h2 id="totalHistorico" class="fw-bold mb-1">0h</h2>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LANÇAR HORAS -->
+        <div class="card shadow-sm border-0 p-4 mb-4">
+            <h5 class="fw-semibold mb-3">Lançar Horas</h5>
+
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <label class="form-label">Data</label>
+                    <input type="date" id="data" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Horas (HH:MM)</label>
+                    <input type="text" id="horas" class="form-control" placeholder="Ex: 02:30">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Motivo</label>
+                    <input type="text" id="observacao" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="text-end">
+                <button id="btnSalvar" class="btn btn-success btn-sm mt-3 px-4">
+                    Salvar
+                </button>
+            </div>
+        </div>
+
+        <!-- HISTÓRICO -->
+        <div class="card shadow-sm border-0 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-semibold mb-0">Histórico</h5>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped align-middle mb-0" id="tabelaLancamentos">
+
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th style="width:130px;">Data</th>
+                            <th style="width:120px;">Horas</th>
+                            <th>Motivo</th>
+                            <th style="width:150px;">Status</th>
+                            <th style="width:150px;">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="text-center">
+                        <!-- JS insere os dados -->
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+        <!-- PAGINAÇÃO -->
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-sm btn-secondary" onclick="paginaAnterior()">
+                Anterior
+            </button>
+
+            <button class="btn btn-sm btn-secondary" onclick="proximaPagina()">
+                Próxima
+            </button>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/supervisor.js"></script>
+
+</body>
+
+</html>
