@@ -99,6 +99,12 @@ async function validarPerfil() {
    CARREGAR DADOS
 ============================ */
 async function carregarDados() {
+
+  if (!userId) {
+    console.warn("userId ainda não definido.");
+    return;
+  }
+
   try {
     const { data, error } = await supabase
       .from("lancamentos")
@@ -112,9 +118,9 @@ async function carregarDados() {
 
     atualizarTabela();
     atualizarSaldo();
+
   } catch (err) {
-    console.error("Erro ao carregar dados:", err);
-    alert("Erro ao carregar dados.");
+    console.error("Erro real ao carregar dados:", err);
   }
 }
 
@@ -423,3 +429,4 @@ function decimalParaHora(valor) {
 
   return `${sinal}${horasFormatadas}:${minutosFormatados}`;
 }
+
